@@ -58,14 +58,17 @@ class ParkingFragment : Fragment() {
 //        imgI?.set(15, binding.root.findViewById(R.id.i16))
 
 //        newAuto()
-
+        var timing:Long=0
         Thread {
             while(true) {
-
+                timing++
                 var rndm = (0..100).random()
-                    if(rndm<10) {
-                        Log.i("Random", rndm.toString())
-                        newAuto()
+                if(rndm<10) {
+                    Log.i("Random", rndm.toString())
+                    newAuto(timing)
+                }
+                if(rndm>10 && rndm<20) {
+                    outAuto(timing)
                 }
 
 
@@ -82,7 +85,7 @@ class ParkingFragment : Fragment() {
 
 
 
-    fun newAuto(){
+    fun newAuto(t:Long){
         for(i in 0..15){
             if(free[i] && rab1[i]){
                 when (i) {
@@ -136,9 +139,69 @@ class ParkingFragment : Fragment() {
                     }
                 }
                 free[i]=false
+                time[i]=t
+                break
+            }
+        }
+    }
+
+    fun outAuto(t:Long){
+        for(i in 0..15){
+            if(!free[i] && rab1[i]){
+                when (i) {
+                    0 -> {val img: ImageView? = binding.root.findViewById(R.id.i1)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    1 -> {val img: ImageView? = binding.root.findViewById(R.id.i2)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    2 -> {val img: ImageView? = binding.root.findViewById(R.id.i3)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    3 -> {val img: ImageView? = binding.root.findViewById(R.id.i4)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    4 -> {val img: ImageView? = binding.root.findViewById(R.id.i5)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    5 -> {val img: ImageView? = binding.root.findViewById(R.id.i6)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    6 -> {val img: ImageView? = binding.root.findViewById(R.id.i7)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    7 -> {val img: ImageView? = binding.root.findViewById(R.id.i8)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    8 -> {val img: ImageView? = binding.root.findViewById(R.id.i9)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    9 -> {val img: ImageView? = binding.root.findViewById(R.id.i10)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    10 -> {val img: ImageView? = binding.root.findViewById(R.id.i11)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    11 -> {val img: ImageView? = binding.root.findViewById(R.id.i12)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    12 -> {val img: ImageView? = binding.root.findViewById(R.id.i13)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    13 -> {val img: ImageView? = binding.root.findViewById(R.id.i14)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    14 -> {val img: ImageView? = binding.root.findViewById(R.id.i15)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                    15 -> {val img: ImageView? = binding.root.findViewById(R.id.i16)
+                        img?.setImageResource(R.drawable.free_place_24dp)
+                    }
+                }
+                free[i]=true
+                time[i]=t-time[i]
                 break
             }
         }
     }
 }
-
