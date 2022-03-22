@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.park.databinding.ActivityMainBinding
+import com.example.park.ui.home.ParkingFragment
 import kotlinx.coroutines.delay
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val PF:ParkingFragment = ParkingFragment()
 
         val navView: BottomNavigationView = binding.navView
 
@@ -67,6 +70,13 @@ class MainActivity : AppCompatActivity() {
                         timeText.text = "День: $day Время: $hour : $min"
                 }
             }
+
+            var rndm = (0..100).random()
+
+//            if(rndm<10) {
+//                Log.i("Random", rndm.toString())
+//                PF.newAuto()
+//            }
             Thread.sleep(100)
         }
         }.start()
