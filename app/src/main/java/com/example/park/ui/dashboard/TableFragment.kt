@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import androidx.fragment.app.ListFragment
+import com.example.park.R
 import com.example.park.databinding.FragmentTableBinding
 
-class TableFragment : Fragment() {
+
+class TableFragment : ListFragment() {
 
     private var _binding: FragmentTableBinding? = null
 
@@ -22,16 +24,16 @@ class TableFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(TableViewModel::class.java)
 
         _binding = FragmentTableBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textTable
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        val data = arrayOf("one", "two", "three", "four")
+        var lv:ListView = root.findViewById(android.R.id.list)
+        val adapter = ArrayAdapter(root.context, R.layout.listitem, R.id.textview, data)
+        lv.adapter = adapter
+
+
         return root
     }
 
