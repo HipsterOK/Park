@@ -115,7 +115,7 @@ class ParkingFragment : Fragment() {
                     Log.i("Random", rndm.toString())
                     newAuto(timing, root)
                 }
-                if(rndm>10 && rndm<20) {
+                if(rndm in 11..19) {
                     outAuto(timing, root)
                 }
 
