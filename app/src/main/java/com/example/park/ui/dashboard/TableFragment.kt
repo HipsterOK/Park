@@ -50,10 +50,10 @@ class TableFragment : ListFragment() {
 
                     var data: MutableList<String> = mutableListOf(
                         Global.dohod.toString(),
-                        Global.yhod.toString(),
-                        Global.sum.toString()
+                        Global.yhod.toString()
                     )
                     var lv: ListView = root.findViewById(android.R.id.list)
+                    val txtSum: TextView = root.findViewById(R.id.sum)
                     val adapter = ArrayAdapter(root.context, R.layout.listitem, R.id.textview, data)
                     lv.adapter = adapter
 
@@ -62,13 +62,13 @@ class TableFragment : ListFragment() {
                     data = mutableListOf(
                         Global.dohod.toString(),
                         Global.yhod.toString(),
-                        Global.sum.toString()
                     )
                 activity?.runOnUiThread {
-                    adapter.clear()
+//                    adapter.clear()
                     adapter.addAll(data)
                     adapter.notifyDataSetChanged()
                     lv.invalidate()
+                    txtSum.setText("Сумма: ${Global.sum}")
                 }
                 Thread.sleep(100)
             }
