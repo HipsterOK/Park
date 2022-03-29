@@ -249,6 +249,8 @@ class ParkingFragment : Fragment() {
                 }
                 Global.free[i]=true
                 Global.time[i]=t-Global.time[i]
+                Global.dohod+=Global.time[i]
+                Global.sum+=Global.time[i]
                 Log.i("Move", "out")
                 break
             }

@@ -13,8 +13,9 @@ class Global : Application() {
         var rab1: Array<Boolean> = arrayOf(true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true)
         var rab2: Array<Boolean> = arrayOf(true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true)
         var time: Array<Long> = arrayOf(0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0)
-        var listItems = ArrayList<String>()
-        var adapter: ArrayAdapter<String>? = null
+        var dohod: Long = 0
+        var yhod: Long = 0
+        var sum: Long = 0
 
     }
 }
