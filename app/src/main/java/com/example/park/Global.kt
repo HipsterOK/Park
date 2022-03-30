@@ -14,8 +14,9 @@ class Global : Application() {
         var rab2: Array<Boolean> = arrayOf(true, true,true, true,true, true,true, true,true, true,true, true,true, true,true, true)
         var time: Array<Long> = arrayOf(0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0,0, 0)
         var dohod: Long = 0
-        var yhod: Long = 0
         var sum: Long = 0
+        var data:MutableList<String> = mutableListOf()
+//        val adapter:ArrayAdapter<String>=null
 
     }
 }

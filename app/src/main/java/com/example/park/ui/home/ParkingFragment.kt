@@ -132,7 +132,7 @@ class ParkingFragment : Fragment() {
     }
 
 
-
+    @Synchronized
     fun newAuto(t:Long, r:View){
         for(i in 0..15){
             if(Global.free[i] && Global.rab1[i]){
@@ -188,12 +188,13 @@ class ParkingFragment : Fragment() {
                 }
                 Global.free[i]=false
                 Global.time[i]=t
+                Global.dohod=0
                 Log.i("Move", "in")
                 break
             }
         }
     }
-
+    @Synchronized
     fun outAuto(t:Long, r: View){
         for(i in 0..15){
             if(!Global.free[i] && Global.rab2[i]){
@@ -249,7 +250,7 @@ class ParkingFragment : Fragment() {
                 }
                 Global.free[i]=true
                 Global.time[i]=t-Global.time[i]
-                Global.dohod+=Global.time[i]
+                Global.dohod=Global.time[i]
                 Global.sum+=Global.time[i]
                 Log.i("Move", "out")
                 break
