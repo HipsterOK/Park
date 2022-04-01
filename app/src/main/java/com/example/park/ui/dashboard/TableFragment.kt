@@ -46,11 +46,14 @@ class TableFragment : ListFragment() {
 
         if(!Global.st[0]) {
             Thread {
+                Log.i("sum1", Global.sum.toString())
                 while (true) {
                     activity?.runOnUiThread {
                         Log.i("sum", Global.sum.toString())
                         for (i in 0..18) {
                             if (!Global.id[i] && Global.dohod[i] != 0.toLong()) {
+                                var lv: ListView = Global.root1!!.findViewById(android.R.id.list)
+                                val txtSum: TextView = Global.root1!!.findViewById(R.id.sum)
                                 val adapter = ListAdapter( Global.root1!!.context, R.layout.listitem, Global.data)
                                 lv.adapter = adapter
                                 Log.i("sum", Global.sum.toString())
