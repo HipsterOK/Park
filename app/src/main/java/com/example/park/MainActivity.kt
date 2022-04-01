@@ -53,6 +53,8 @@ class MainActivity : AppCompatActivity() {
             }
             if (hour >= 24) {
                 hour = 0
+                Global.dohod[17]=-3000
+                Global.data.addAll(listOf(Global.dohod[16].toString()))
                 day++
             }
             Log.i("timer", min.toString())
@@ -71,7 +73,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            var rndm = (0..100).random()
 
 //            if(rndm<10) {
 //                Log.i("Random", rndm.toString())

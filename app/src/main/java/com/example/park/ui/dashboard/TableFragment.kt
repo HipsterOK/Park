@@ -24,7 +24,6 @@ class TableFragment : ListFragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    @Synchronized
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,49 +33,38 @@ class TableFragment : ListFragment() {
         _binding = FragmentTableBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-//        UiThreadStatement.runOnUiThread(Runnable {  val data: MutableList<String> = mutableListOf(Global.dohod.toString(), Global.yhod.toString(), Global.sum.toString())
-//                var lv: ListView = root.findViewById(android.R.id.list)
-//                val adapter = ArrayAdapter(root.context, R.layout.listitem, R.id.textview, data)
-//                lv.adapter = adapter
-//                adapter.notifyDataSetChanged()
-//                Thread.sleep(100) })
-
-
-                    Global.data = mutableListOf(
-                        Global.dohod.toString()
-                    )
                     var lv: ListView = root.findViewById(android.R.id.list)
                     val txtSum: TextView = root.findViewById(R.id.sum)
                     val adapter = ListAdapter(root.context, R.layout.listitem, Global.data);
-
+                    adapter.notifyDataSetChanged();
                     lv.adapter = adapter
+                    txtSum.text = "Сумма: ${Global.sum}"
 
-                Thread {
-            while (true) {
+        if(!Global.st[0]) {
+            Thread {
+                while (true) {
                     activity?.runOnUiThread {
-                        if (Global.dohod != 0.toLong()) {
-//                            Global.data= mutableListOf(Global.dohod.toString())
+                        for (i in 0..18) {
+                            if (!Global.id[i] && Global.dohod[i] != 0.toLong()) {
+                                val adapter =
+                                    ListAdapter(root.context, R.layout.listitem, Global.data)
+                                lv.adapter = adapter
 
-                            Global.data.addAll(listOf(Global.dohod.toString()))
-//                            adapter.addAll(Global.data)
-//                            adapter.clear()
-                            val adapter = ListAdapter(root.context, R.layout.listitem, Global.data);
+                                adapter.notifyDataSetChanged();
 
-                            lv.adapter = adapter
-
-                            adapter.notifyDataSetChanged();
-
-
-//                            adapter.notifyDataSetChanged()
-//                            lv.invalidate()
-                            Global.dohod=0
+                                Global.sum += Global.dohod[i]
+                                Global.dohod[i] = 0
+                                Global.id[i] = true
+                            }
                         }
                         txtSum.text = "Сумма: ${Global.sum}"
 
                     }
-                Thread.sleep(100)
-            }
-        }.start()
+                    Thread.sleep(100)
+                }
+            }.start()
+            Global.st[0]=true
+        }
 
         return root
     }

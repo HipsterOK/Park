@@ -22,13 +22,25 @@ class ListAdapter(var mCtx: Context, var resource:Int, var items:List<String>)
             itm = items
 
             if (itm[position].toInt() > 0) {
-                textView.text = "${itm[position]} руб."
+                textView.text = "Оплата парковки: ${itm[position]} руб."
                 textView.setTextColor(Color.GREEN)
             }
-            if (itm[position].toInt() < 0) {
-                textView.text = "${itm[position]} руб."
-                textView.setTextColor(Color.RED)
-            }
+        if (itm[position].toInt() < 0) {
+            textView.text = "Минус: ${itm[position]} руб."
+            textView.setTextColor(Color.RED)
+        }
+                if (itm[position].toInt() == -3000) {
+                    textView.text = "Аренда: ${itm[position]} руб."
+                    textView.setTextColor(Color.RED)
+                }
+                if (itm[position].toInt() == -2500) {
+                    textView.text = "Ремонт парковочного места: ${itm[position]} руб."
+                    textView.setTextColor(Color.RED)
+                }
+                if (itm[position].toInt() == -5000) {
+                    textView.text = "Ремонт шлагбаума: ${itm[position]} руб."
+                    textView.setTextColor(Color.RED)
+                }
 
             return view
     }
