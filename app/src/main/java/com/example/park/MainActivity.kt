@@ -53,11 +53,12 @@ class MainActivity : AppCompatActivity() {
             }
             if (hour >= 24) {
                 hour = 0
-                Global.dohod[17]=-3000
+                Global.dohod[16]=-3000
                 Global.data.addAll(listOf(Global.dohod[16].toString()))
+                Global.id[16]=false
                 day++
             }
-            Log.i("timer", min.toString())
+//            Log.i("timer", min.toString())
             runOnUiThread {
                 if(min<10){
                     if(hour<10){

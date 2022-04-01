@@ -14,6 +14,9 @@ import com.example.park.Global
 import com.example.park.ListAdapter
 import com.example.park.R
 import com.example.park.databinding.FragmentTableBinding
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onStart
 
 
 class TableFragment : ListFragment() {
@@ -32,6 +35,7 @@ class TableFragment : ListFragment() {
 
         _binding = FragmentTableBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        Global.root1=root
 
                     var lv: ListView = root.findViewById(android.R.id.list)
                     val txtSum: TextView = root.findViewById(R.id.sum)
@@ -44,11 +48,13 @@ class TableFragment : ListFragment() {
             Thread {
                 while (true) {
                     activity?.runOnUiThread {
+                        Log.i("sum", Global.sum.toString())
                         for (i in 0..18) {
                             if (!Global.id[i] && Global.dohod[i] != 0.toLong()) {
-                                val adapter =
-                                    ListAdapter(root.context, R.layout.listitem, Global.data)
+                                val adapter = ListAdapter( Global.root1!!.context, R.layout.listitem, Global.data)
                                 lv.adapter = adapter
+                                Log.i("sum", Global.sum.toString())
+
 
                                 adapter.notifyDataSetChanged();
 
