@@ -318,11 +318,21 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/repBar2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:padding="10dp"
+            android:src="@drawable/repair"
+            app:backgroundTint="@android:color/holo_orange_light" />
+
         <ImageView
             android:id="@+id/out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/free_place_24dp"/>
+            android:src="@drawable/free_place_24dp"
+            android:padding="10dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -340,7 +350,17 @@
             android:id="@+id/in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/free_place_24dp"/>
+            android:src="@drawable/free_place_24dp"
+            android:padding="10dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/repBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:padding="50dp"
+            android:src="@drawable/repair"
+            app:backgroundTint="@android:color/holo_orange_light" />
     </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
@@ -348,25 +368,13 @@
     android:orientation="horizontal"
     android:paddingBottom="70dp"
     android:gravity="center">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/repBar1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_gravity="bottom|start"
-        android:src="@drawable/ic_home_black_24dp" />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/repBar2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_home_black_24dp"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/repPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_home_black_24dp" />
+        android:src="@drawable/repair"
+        app:backgroundTint="@android:color/holo_orange_light" />
 </LinearLayout>
 </LinearLayout>
