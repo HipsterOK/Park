@@ -1,6 +1,8 @@
 package com.example.park
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
 import android.view.View
 import android.widget.ArrayAdapter
 
@@ -22,6 +24,8 @@ class Global : Application() {
         var st: Array<Boolean> = arrayOf(false, false)
         var root1: View? = null
         var root2: View? = null
+        var act: Activity? = null
+        var thisCnt: Context? = null
 //        val adapter:ArrayAdapter<String>=null
 
     }

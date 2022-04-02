@@ -1,5 +1,6 @@
 package com.example.park.ui.home
 
+import android.app.Application
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.park.Global
+import com.example.park.MainActivity
 import com.example.park.R
 import com.example.park.databinding.FragmentParkingBinding
 import java.util.concurrent.TimeUnit
@@ -32,6 +34,7 @@ class ParkingFragment : Fragment() {
         _binding = FragmentParkingBinding.inflate(inflater, container, false)
         val root: View = binding.root
         Global.root2=root
+        Global.thisCnt=context
         val r = root
         for(i in 0..15){
             var f=16
@@ -615,6 +618,8 @@ class ParkingFragment : Fragment() {
             Global.rab1 = false
             val img: ImageView? = r.findViewById(R.id.`in`)
             img?.setImageResource(R.drawable.broken_place_24dp)
+//            val toast = Toast.makeText(Global.thisCnt, "Поломка шлагбаума №1!", Toast.LENGTH_SHORT)
+//            toast.show()
         }
     }
 
@@ -623,6 +628,8 @@ class ParkingFragment : Fragment() {
                 Global.rab2 = false
                 val img: ImageView? = r.findViewById(R.id.out)
                 img?.setImageResource(R.drawable.broken_place_24dp)
+//                val toast = Toast.makeText(Global.thisCnt, "Поломка шлагбаума №2!", Toast.LENGTH_SHORT)
+//                toast.show()
             }
         }
 

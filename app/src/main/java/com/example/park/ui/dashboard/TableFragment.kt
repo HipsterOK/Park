@@ -36,6 +36,8 @@ class TableFragment : ListFragment() {
         _binding = FragmentTableBinding.inflate(inflater, container, false)
         val root: View = binding.root
         Global.root1=root
+        Global.act=activity
+        Global.thisCnt=context
 
                     var lv: ListView = root.findViewById(android.R.id.list)
                     val txtSum: TextView = root.findViewById(R.id.sum)
@@ -48,7 +50,8 @@ class TableFragment : ListFragment() {
             Thread {
                 Log.i("sum1", Global.sum.toString())
                 while (true) {
-                    activity?.runOnUiThread {
+                    Log.i("sum2", Global.sum.toString())
+                    Global.act?.runOnUiThread {
                         Log.i("sum", Global.sum.toString())
                         for (i in 0..18) {
                             if (!Global.id[i] && Global.dohod[i] != 0.toLong()) {
@@ -64,6 +67,7 @@ class TableFragment : ListFragment() {
                                 Global.sum += Global.dohod[i]
                                 Global.dohod[i] = 0
                                 Global.id[i] = true
+                                txtSum.text = "Сумма: ${Global.sum}"
                             }
                         }
                         txtSum.text = "Сумма: ${Global.sum}"
